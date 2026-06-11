@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AI Prompt Generator | Stable Diffusion + Sora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-abstract"></div>
+    <div class="container">
+        <header>
+            <h1>✦ Prompt Forge</h1>
+            <p>Генератор промтов для Stable Diffusion & Sora</p>
+            <div class="badge-group">
+                <span class="badge">AI Image</span>
+                <span class="badge">AI Video</span>
+                <span class="badge">Creative Suite</span>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="photo">📸 Фото (SD)</button>
+            <button class="tab-btn" data-tab="video">🎬 Видео (Sora)</button>
+        </div>
+
+        <div class="tab-content active" id="photo-tab">
+            <div class="input-group">
+                <label for="photo-idea">💡 Ваша идея / ключевые слова</label>
+                <input type="text" id="photo-idea" placeholder="Например: киберпанк-кот в дождливом городе, неон, отражения">
+            </div>
+
+            <div class="settings-panel">
+                <h3>⚙️ Параметры генерации</h3>
+                <div class="settings-grid">
+                    <div class="setting">
+                        <label>Соотношение сторон</label>
+                        <select id="photo-ratio">
+                            <option value="1:1">1:1 (квадрат)</option>
+                            <option value="16:9">16:9 (широкий)</option>
+                            <option value="9:16">9:16 (вертикальный)</option>
+                            <option value="4:3">4:3 (классика)</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <label>Стиль</label>
+                        <select id="photo-style">
+                            <option value="photorealistic">Фотореализм</option>
+                            <option value="anime">Аниме / манга</option>
+                            <option value="cyberpunk">Киберпанк</option>
+                            <option value="fantasy">Фэнтези</option>
+                            <option value="oil painting">Масляная живопись</option>
+                            <option value="cinematic">Кинематографичный</option>
+                        </select>
+                    </div>
+                    <div class="setting full-width">
+                        <label>Negative prompt (что исключить)</label>
+                        <input type="text" id="photo-negative" placeholder="например: blurry, ugly, deformed, watermark">
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button id="generate-photo" class="btn-primary">✨ Сгенерировать промт</button>
+                <button id="random-photo" class="btn-secondary">🎲 Случайный промт дня</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="video-tab">
+            <div class="input-group">
+                <label for="video-idea">🎥 Сценарий / идея для видео</label>
+                <input type="text" id="video-idea" placeholder="Например: космическая станция дрейфует над Землёй, медленный поворот камеры">
+            </div>
+
+            <div class="settings-panel">
+                <h3>⚙️ Параметры видео</h3>
+                <div class="settings-grid">
+                    <div class="setting">
+                        <label>Соотношение сторон</label>
+                        <select id="video-ratio">
+                            <option value="16:9">16:9 (горизонтальное)</option>
+                            <option value="9:16">9:16 (вертикальное Reels)</option>
+                            <option value="1:1">1:1 (квадратное)</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <label>Движение / динамика</label>
+                        <select id="video-motion">
+                            <option value="slow cinematic pan">Медленный кинематографический проход</option>
+                            <option value="smooth orbiting">Орбитальное движение камеры</option>
+                            <option value="fast action">Быстрое динамичное действие</option>
+                            <option value="static">Статичная камера, движение объекта</option>
+                            <option value="hyperlapse">Hyperlapse / ускорение времени</option>
+                        </select>
+                    </div>
+                    <div class="setting full-width">
+                        <label>Negative prompt (нежелательные эффекты)</label>
+                        <input type="text" id="video-negative" placeholder="например: flicker, distortion, bad anatomy, jump cuts">
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button id="generate-video" class="btn-primary">✨ Сгенерировать промт</button>
+                <button id="random-video" class="btn-secondary">🎲 Случайный промт дня</button>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <div class="result-header">
+                <h3>📋 Сгенерированный промт</h3>
+                <div class="result-actions">
+                    <button id="copy-btn" class="icon-btn" title="Копировать">📋</button>
+                    <button id="export-btn" class="icon-btn" title="Экспорт в .txt">💾</button>
+                </div>
+            </div>
+            <div id="prompt-output" class="prompt-output">
+                Здесь появится ваш промт...
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
